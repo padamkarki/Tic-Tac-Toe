@@ -97,17 +97,17 @@ print("Welcome to TIC TAC TOE")
 
 while True:
     the_board = [" "]*10
-    p1_marker,p2_marker = player_input
+    p1_marker,p2_marker = player_input()
 
     turn = choose_first()
-    print(turn + "will play first")
+    print(turn + " will play first")
 
     play_game = input("Ready to play? y or n: ")
     if play_game == "y":
         game_on = True
     else:
         game_on = False
-    
+
     # Game Play
     #while game_on:
     while game_on:
@@ -131,9 +131,10 @@ while True:
                 game_on = False
             else:
             #check if tie
-                if full_board_check(the_board);
+                if full_board_check(the_board):
                     display_board(the_board)
                     print("Tie Game")
+                    game_on = False
             #no won, no tie, next player turn
                 else:
                     turn = "Player 2"
@@ -149,6 +150,7 @@ while True:
             place_marker(the_board, p2_marker, position)
 
 
+
             #check if won
             if win_check(the_board,p2_marker):
                 display_board(the_board)
@@ -156,13 +158,14 @@ while True:
                 game_on = False
             else:
             #check if tie
-                if full_board_check(the_board);
+                if full_board_check(the_board):
                     display_board(the_board)
                     print("Tie Game")
+                    game_on = False
             #no won, no tie, next player turn
                 else:
                     turn = "Player 1"
-                    
+
     if not replay():
         break
 
