@@ -41,6 +41,8 @@ def place_marker(board,marker,position):
 place_marker(test_board,'$',8)
 display_board(test_board)
 
+
+
 # Win check
 def win_check(board, mark):
     # all rows
@@ -88,3 +90,80 @@ def player_choice(board):
 def replay():
     choice = input("Play again? Y or N: ").upper()
     return choice == "Y"
+
+# MAIN PROGRAM
+
+print("Welcome to TIC TAC TOE")
+
+while True:
+    the_board = [" "]*10
+    p1_marker,p2_marker = player_input
+
+    turn = choose_first()
+    print(turn + "will play first")
+
+    play_game = input("Ready to play? y or n: ")
+    if play_game == "y":
+        game_on = True
+    else:
+        game_on = False
+    
+    # Game Play
+    #while game_on:
+    while game_on:
+
+        # Player2's turn.
+        if turn == "Player 1":
+            #show board
+            display_board(the_board)
+
+            #choose position
+            position = player_choice(the_board)
+
+            #place marker on position
+            place_marker(the_board, p1_marker, position)
+
+
+            #check if won
+            if win_check(the_board,p1_marker):
+                display_board(the_board)
+                print("Congrats Player 1, you won!")
+                game_on = False
+            else:
+            #check if tie
+                if full_board_check(the_board);
+                    display_board(the_board)
+                    print("Tie Game")
+            #no won, no tie, next player turn
+                else:
+                    turn = "Player 2"
+        # Player2's turn.
+        else:
+            #show board
+            display_board(the_board)
+
+            #choose position
+            position = player_choice(the_board)
+
+            #place marker on position
+            place_marker(the_board, p2_marker, position)
+
+
+            #check if won
+            if win_check(the_board,p2_marker):
+                display_board(the_board)
+                print("Congrats Player 2, you won!")
+                game_on = False
+            else:
+            #check if tie
+                if full_board_check(the_board);
+                    display_board(the_board)
+                    print("Tie Game")
+            #no won, no tie, next player turn
+                else:
+                    turn = "Player 1"
+                    
+    if not replay():
+        break
+
+
